@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:composition template="template/templateAdmin.xhtml">
+        <ui:define name="title">
+            Usuário
+        </ui:define>
+        <ui:define name="meta_head">
+
+        </ui:define>
+        <ui:define name="content">
+            <h:form id="form_user">
+                <f:passThroughAttribute name="autocomplete" value="off" />
+                <strong>Manutenção de Usuário</strong>
+                <hr />
+                <ul class="nav nav-pills">
+                    <li role="presentation" class="dropdown active">
+                        <a class="dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" >
+                            Opções <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#dlg_store">
+                                    Gravar
+                                </a>             
+                            </li>
+                            <c:if test="#{usersMB.users.id ne null}">
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#dlg_delete">
+                                        Inativar Cadastro
+                                    </a>
+                                </li>
+                            </c:if>
+                            <li>
+                                <h:commandLink value="Limpar"  action="#{callPageMB.page('user', 'usersMB')}" immediate="true"/>
+                            </li>                            
+
+                        </ul>
+                    </li>
+                    <li role="presentation" class="dropdown" style="float: right">
+                        <h:commandLink value="Lista"  action="#{callPageMB.page('users')}" immediate="true" />
+                    </li>
+                </ul>
+                <hr />
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="nine columns">
+                                <h:outputLabel value="Nome" />
+                                <h:inputText  value="#{usersMB.users.person.name}"  converter="#{toUpperCase}" autocomplete="false" styleClass="form-control" readonly="#{usersMB.users.id ne null and not empty usersMB.users.person.name}">
+                                    <f:ajax event="change"  render="@this" />
+                                </h:inputText>
+                            </div>                        
+                        </div>
+
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="three columns">
+                                <h:outputLabel value="Tipo de Documento" />
+                                <h:selectOneMenu value="#{usersMB.idDocumentType}" styleClass="form-control" disabled="#{usersMB.users.id ne null and not empty usersMB.users.person.document}">
+                                    <f:ajax event="change"  render="@this :form_user:i_mask_document_type" execute="@form"/>
+                                    <f:selectItems value="#{usersMB.listDocumentType}" />
+                                </h:selectOneMenu>
+                            </div>                        
+                        </div>                        
+                        <div class="col-lg-6">
+                            <h:outputLabel value="Documento" />
+                            <h:column>
+                                <h:panelGroup id="i_mask_document_type">                                
+                                    <h:inputText value="#{usersMB.users.person.document}" autocomplete="false" disabled="#{usersMB.idDocumentType eq 1}" styleClass="form-control" readonly="#{usersMB.users.id ne null and not empty usersMB.users.person.document}">
+                                        <f:ajax event="change"  render="@this :form_user:" execute="@this" listener="#{usersMB.findByDocument}"/>
+                                    </h:inputText>   
+                                </h:panelGroup>
+                            </h:column>                            
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h:outputLabel value="Email" />
+                            <h:inputText value="#{usersMB.users.email}" autocomplete="false" styleClass="form-control" readonly="#{usersMB.users.id ne null and not empty usersMB.users.email}"> 
+                                <f:ajax event="change"  render="@this" />
+                            </h:inputText>                          
+                        </div>
+                    </div>
+                    <br />
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">Informações importantes</div>
+                        <div class="panel-body">
+                            <div class="col-lg-3">
+                                <h:outputLabel value="Login" />
+                                <h:inputText value="#{usersMB.users.nickname}" autocomplete="false" styleClass="form-control">
+                                    <f:ajax event="change"  render="@this" execute="@form"/>
+                                </h:inputText>                            
+                            </div>
+                            <div class="col-lg-3">
+                                <h:outputLabel value="Senha" />
+                                <h:inputText value="#{usersMB.password}" autocomplete="false" styleClass="form-control">
+                                    <f:ajax event="change"  render="@this" execute="@form"/>
+                                    <f:passThroughAttribute name="type" value="password" />
+                                </h:inputText>
+                            </div>
+                            <div class="col-lg-3">
+                                <h:outputLabel value="Nível" />
+                                <h:selectOneMenu value="#{usersMB.idLevelUser}" styleClass="form-control">
+                                    <f:ajax event="change"  render="@this" execute="@form"/>
+                                    <f:selectItems value="#{usersMB.listLevelUser}" />
+                                </h:selectOneMenu>                            
+                            </div>
+                            <div class="col-lg-3">
+                                <h:outputLabel value="Ativo" />
+                                <h:selectBooleanCheckbox value="#{usersMB.users.active}" label="ATIVO" styleClass="form-control">
+                                    <f:ajax event="change" render="@this" />
+                                </h:selectBooleanCheckbox>                            
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <c:if test="#{usersMB.users.id ne null}">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Grupo de Segurança</div>
+                        <div class="panel-body">
+                            <h:dataTable value="#{usersMB.listSecurityGroup}" var="sg" styleClass="table table-hover">
+                                <h:column>
+                                    <f:facet name="header">
+
+                                    </f:facet>
+                                    <h:selectBooleanCheckbox value="#{sg.selected}">
+                                        <f:ajax event="change" render="@this" execute="@form" listener="#{usersMB.change(sg)}" />
+                                    </h:selectBooleanCheckbox>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Grupo
+                                    </f:facet>
+                                    #{sg.name}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Detalhes
+                                    </f:facet>
+                                    #{sg.details}
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                    </div>
+                </c:if>
+                <!-- SAVE -->
+                <div class="modal fade" id="dlg_store" tabindex="-1" role="dialog" aria-labelledby="Gravar registro?">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                                <h4 class="modal-title" id="myModalLabel">Gravar Cadastro</h4>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                                <h:commandLink value="Confirmar" class="btn btn-primary">
+                                    <f:ajax event="click" execute="@form" render=":form_user:" listener="#{usersMB.save}" onevent="statusbaroverlay"/>
+                                    <f:passThroughAttribute name="data-dismiss" value="modal" />
+                                </h:commandLink>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Desfazer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+                <!-- DELETE -->
+                <div class="modal fade" id="dlg_delete" tabindex="-1" role="dialog" aria-labelledby="Inativar cadastro?">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                                <h4 class="modal-title" id="myModalLabel">Inátivar Cadastro?</h4>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                                <h:commandLink value="Confirmar" class="btn btn-primary">
+                                    <f:ajax event="click" execute="@form" render=":form_user:" listener="#{usersMB.delete}" onevent="statusbaroverlay"/>
+                                    <f:passThroughAttribute name="data-dismiss" value="modal" />
+                                </h:commandLink>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Desfazer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

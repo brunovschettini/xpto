@@ -1,0 +1,394 @@
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+/* SUBMENU DROPDOWN */
+
+.alert {
+    margin: 0;    
+    border: 1px solid transparent;
+    border-radius: 4px;
+    list-style: none;
+    padding: 0!important;
+
+}
+
+.alert-success { 
+
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-color: #d6e9c6;
+    color: #468847;
+    background-color: #dff0d8;
+    padding: 15px!important;
+    display: block;
+}
+
+
+.alert-info { 
+
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-color: #d9edf7;
+    color: #3a87ad;
+    background-color: #bce8f1;
+    padding: 15px!important;
+    display: block;
+}
+
+
+.alert-warning {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-color: #fbeed5;
+    color: #c09853;
+    background-color: #fcf8e3;
+    padding: 15px!important;
+    display: block;
+}
+
+
+.moviment_paid_out {color: #468847}
+.moviment_paid_out_inative {color: #cccccc}
+.moviment_expired {color: orange}
+.moviment_opened {color: blue;}
+.moviment_inactive {color: gray;}
+
+.moviment_paid_out_row {color: #3c763d!important; background: #dff0d8!important;}
+.moviment_paid_out_row :hover{background: #d1eac8!important;}
+.moviment_paid_out_inative_row {color: #009999!important; background: #dff0d8!important;}
+.moviment_paid_out_inative_row:hover {color: #009999; background: #dff0d8!important;}
+.moviment_expired_row {background: #fcf8e3!important; color: orange!important;}
+.moviment_expired_row:hover {background: #faf3d1!important;}
+.moviment_opened_row {background: #d9edf7!important; color: #31708f!important;}
+.moviment_opened_row:hover {background: #d5ebf6!important;}
+.moviment_inactive_row {color: gray!important;}
+.moviment_inactive_row:hover {background: #f5f5f5!important;}
+
+.modal-status-bar {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 9000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content-status-bar {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+.btn-sq-lg {
+    width: 150px !important;
+    height: 150px !important;
+}
+
+.btn-sq-md {
+    width: 100px !important;
+    height: 100px !important;
+    font-size: 10px;
+}
+
+.btn-sq-sm {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 10px;
+}
+
+.btn-sq-xs {
+    width: 25px !important;
+    height: 25px !important;
+    padding:2px;
+}
+
+#pre-loading-transparency-overlay {
+    visibility: hidden;
+}
+
+#loading-transparency-overlay {
+    display:block;
+    top: 0;
+    bottom: 0;
+    z-index: 9999!important;
+    position:absolute;
+    font-size:0px;
+    opacity: 0.7;
+    filter: alpha(opacity=30); /* For IE8 and earlier */
+    background-color:white;
+    width: 100%!important;
+}
+
+.loading-transparency-overlay-img {
+    position: fixed;
+    top:50%;
+    left:50%;
+    margin-top:-50px;
+    margin-left:-50px;
+}
+
+.no-radius {
+    border-radius:0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.font-color-white {
+    color: white;
+}
+
+.font-color-red {
+    color: red;
+}
+
+.font-color-black{
+    color: black;
+}
+
+
+/* Fancy Bootstrap Checkboxes */
+/* https://bootsnipp.com/snippets/featured/fancy-bootstrap-checkboxes */
+
+/*.form-group input[type="checkbox"] {
+    display: none;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span {
+    width: 20px;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span:first-child {
+    display: none;
+}
+.form-group input[type="checkbox"] + .btn-group > label span:last-child {
+    display: inline-block;   
+}
+
+.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+    display: inline-block;
+}
+.form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+    display: none;   
+}*/
+
+/* */
+
+
+.reset-this {
+    animation : none;
+    animation-delay : 0;
+    animation-direction : normal;
+    animation-duration : 0;
+    animation-fill-mode : none;
+    animation-iteration-count : 1;
+    animation-name : none;
+    animation-play-state : running;
+    animation-timing-function : ease;
+    backface-visibility : visible;
+    background : 0;
+    background-attachment : scroll;
+    background-clip : border-box;
+    background-color : transparent;
+    background-image : none;
+    background-origin : padding-box;
+    background-position : 0 0;
+    background-position-x : 0;
+    background-position-y : 0;
+    background-repeat : repeat;
+    background-size : auto auto;
+    border : 0;
+    border-style : none;
+    border-width : medium;
+    border-color : inherit;
+    border-bottom : 0;
+    border-bottom-color : inherit;
+    border-bottom-left-radius : 0;
+    border-bottom-right-radius : 0;
+    border-bottom-style : none;
+    border-bottom-width : medium;
+    border-collapse : separate;
+    border-image : none;
+    border-left : 0;
+    border-left-color : inherit;
+    border-left-style : none;
+    border-left-width : medium;
+    border-radius : 0;
+    border-right : 0;
+    border-right-color : inherit;
+    border-right-style : none;
+    border-right-width : medium;
+    border-spacing : 0;
+    border-top : 0;
+    border-top-color : inherit;
+    border-top-left-radius : 0;
+    border-top-right-radius : 0;
+    border-top-style : none;
+    border-top-width : medium;
+    bottom : auto;
+    box-shadow : none;
+    box-sizing : content-box;
+    caption-side : top;
+    clear : none;
+    clip : auto;
+    color : inherit;
+    columns : auto;
+    column-count : auto;
+    column-fill : balance;
+    column-gap : normal;
+    column-rule : medium none currentColor;
+    column-rule-color : currentColor;
+    column-rule-style : none;
+    column-rule-width : none;
+    column-span : 1;
+    column-width : auto;
+    content : normal;
+    counter-increment : none;
+    counter-reset : none;
+    cursor : auto;
+    direction : ltr;
+    display : inline;
+    empty-cells : show;
+    float : none;
+    font : normal;
+    font-family : inherit;
+    font-size : medium;
+    font-style : normal;
+    font-variant : normal;
+    font-weight : normal;
+    height : auto;
+    hyphens : none;
+    left : auto;
+    letter-spacing : normal;
+    line-height : normal;
+    list-style : none;
+    list-style-image : none;
+    list-style-position : outside;
+    list-style-type : disc;
+    margin : 0;
+    margin-bottom : 0;
+    margin-left : 0;
+    margin-right : 0;
+    margin-top : 0;
+    max-height : none;
+    max-width : none;
+    min-height : 0;
+    min-width : 0;
+    opacity : 1;
+    orphans : 0;
+    outline : 0;
+    outline-color : invert;
+    outline-style : none;
+    outline-width : medium;
+    overflow : visible;
+    overflow-x : visible;
+    overflow-y : visible;
+    padding : 0;
+    padding-bottom : 0;
+    padding-left : 0;
+    padding-right : 0;
+    padding-top : 0;
+    page-break-after : auto;
+    page-break-before : auto;
+    page-break-inside : auto;
+    perspective : none;
+    perspective-origin : 50% 50%;
+    position : static;
+    /* May need to alter quotes for different locales (e.g fr) */
+    quotes : '\201C' '\201D' '\2018' '\2019';
+    right : auto;
+    tab-size : 8;
+    table-layout : auto;
+    text-align : inherit;
+    text-align-last : auto;
+    text-decoration : none;
+    text-decoration-color : inherit;
+    text-decoration-line : none;
+    text-decoration-style : solid;
+    text-indent : 0;
+    text-shadow : none;
+    text-transform : none;
+    top : auto;
+    transform : none;
+    transform-style : flat;
+    transition : none;
+    transition-delay : 0s;
+    transition-duration : 0s;
+    transition-property : none;
+    transition-timing-function : ease;
+    unicode-bidi : normal;
+    vertical-align : baseline;
+    visibility : visible;
+    white-space : normal;
+    widows : 0;
+    width : auto;
+    word-spacing : normal;
+    z-index : auto;
+    /* basic modern patch */
+    all: initial;
+    all: unset;
+}
+
+/* basic modern patch */
+
+.reset-this-root {
+    all: initial;
+    * {
+        all: unset;
+    }
+}

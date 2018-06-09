@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <composite:interface>
+            <composite:attribute name="style" type="java.lang.String" required="false" default="" />
+            <composite:attribute name="rendered" type="java.lang.Boolean" required="false" default="true" />
+            <composite:attribute name="headerClass" type="java.lang.String" required="false" default="" />
+            <composite:attribute name="headerText" type="java.lang.String" required="false" default="" />
+        </composite:interface>
+        <composite:implementation>
+            <f:facet name="header">
+                <span class="#{cc.attrs.headerClass}">
+                    #{cc.attrs.headerText}
+                </span>
+            </f:facet>
+            <composite:insertChildren />
+        </composite:implementation>
+    </h:body>
+</html>

@@ -1,0 +1,126 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template/templateAdmin.xhtml">
+        <ui:define name="meta_head">
+        </ui:define>
+        <ui:define name="title">
+            Produtos
+        </ui:define>
+        <ui:define name="content">            
+            <strong>Produtos</strong>
+            <hr />
+            <h:form id="form_products" onsubmit="return false;">
+                <f:passThroughAttribute name="autocomplete" value="off" />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h:panelGroup layout="span">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <h:panelGroup  id="i_filters">
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <h:selectOneMenu value="#{productsMB.by}" styleClass="form-control">
+                                                        <f:ajax event="change" render="@this i_filters" execute="@this" listener="#{productsMB.setQ('')}"/>
+                                                        <f:selectItem itemLabel="Filtro" itemValue=""  />
+                                                        <f:selectItem itemLabel="Nome" itemValue="name"  />
+                                                        <f:selectItem itemLabel="Modelo" itemValue="model"  />
+                                                        <f:selectItem itemLabel="Marca" itemValue="brand"  />
+                                                        <f:selectItem itemLabel="Código de barras" itemValue="barcode"  />
+                                                        <f:selectItem itemLabel="Código" itemValue="code"  />
+                                                    </h:selectOneMenu>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <h:inputText value="#{productsMB.q}" 
+                                                                 disabled="#{empty productsMB.by}" 
+                                                                 styleClass="form-control focus_item" 
+                                                                 autocomplete="false"
+                                                                 onkeyup="
+                                                                         if (event.keyCode === 13) {
+                                                                             document.getElementById('form_products:btnfindproducts').click();
+                                                                         }
+                                                                 ">
+                                                        <f:passThroughAttribute name="placeholder" value="Descrição da pesquisa" />
+                                                        <f:passThroughAttribute name="onpaste" value="return false" />
+                                                        <f:passThroughAttribute name="ondrop" value="return false" />
+                                                    </h:inputText>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <h:commandLink value="PESQUISAR" style="width: 150px" styleClass="btn btn-default form-control" id="btnfindproducts">
+                                                        <f:ajax event="click" render="@this i_result_list" execute="@form" listener="#{productsMB.loadListProducts()}" onevent="statusbar"/>
+                                                    </h:commandLink>
+                                                </div>
+                                            </div>
+                                        </h:panelGroup>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h:commandLink value="CADASTRAR" action="#{callPageMB.page('product')}" styleClass="btn btn-primary btn-lg" />
+                                </div>
+                            </div>
+                        </h:panelGroup>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <h:panelGroup layout="block" id="i_result_list">
+                                <div class="table-responsive table-scroll-max">
+                                    <h:dataTable var="product" value="#{productsMB.listProducts}" styleClass="table table-striped table-hover table-scroll-max">
+                                        <h:column>
+                                            <h:outputLink value="product.xhtml?id=#{product.id}" styleClass="btn btn-default" style="width: 60px">
+                                                ##{product.id}
+                                            </h:outputLink>
+                                        </h:column>                                        
+                                        <h:column>
+                                            <f:facet name="header">
+                                                Nome        
+                                            </f:facet>
+                                            #{product.name}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                Modelo     
+                                            </f:facet>
+                                            #{product.model}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                Marca
+                                            </f:facet>
+                                            #{product.brand}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                Categoria
+                                            </f:facet>
+                                            #{product.categorie.name}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                Subcategoria
+                                            </f:facet>
+                                            #{product.subcategorie.name}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                Preço
+                                            </f:facet>
+                                            #{product.priceString}
+                                        </h:column>
+                                    </h:dataTable> 
+                                </div>
+                            </h:panelGroup>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>

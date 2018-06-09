@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <composite:interface>
+            <composite:attribute name="id" type="java.lang.String" required="false" />            
+            <composite:attribute name="event" type="java.lang.String" required="false" default="change"/>
+            <composite:attribute name="disabled" type="java.lang.Boolean" required="false" default="false" />
+            <composite:attribute name="rendered" type="java.lang.Boolean" required="false" default="false" />
+            <composite:attribute name="readonly" type="java.lang.Boolean" required="false" default="false" />
+            <composite:attribute name="title" type="java.lang.String" required="false" default="" />
+            <composite:attribute name="value" type="java.lang.String" required="false" default="" />
+            <composite:attribute name="styleClass" type="java.lang.String" required="false" default="" />            
+            <composite:attribute name="global" type="java.lang.Boolean" required="false" default="false" />
+            <composite:attribute name="maxlength" type="java.lang.Integer" required="false" default="none" />
+            <composite:attribute name="size" type="java.lang.Integer" required="false" default="none" />
+            <composite:attribute name="onevent" type="java.lang.String" required="false" default="statusbar" />
+        </composite:interface>
+        <composite:implementation>
+            <h:inputText id="#{cc.attrs.id}" value="#{cc.attrs.value}" title="#{cc.attrs.title}" styleClass="form-control #{cc.attrs.styleClass}" readonly="#{cc.attrs.readonly}" disabled="#{cc.attrs.disabled}" rendered="#{cc.attrs.rendered}" maxlength="" size="">
+                <composite:insertChildren />
+                <f:passThroughAttribute name="type" value="date" />
+            </h:inputText>
+        </composite:implementation>
+    </h:body>
+</html>

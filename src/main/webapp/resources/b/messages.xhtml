@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:body>
+        <composite:interface>
+            <composite:attribute name="id" type="java.lang.String" required="false" />
+            <composite:attribute name="success" type="java.lang.Boolean" required="false" />
+            <composite:attribute name="hide" type="java.lang.Boolean" required="false" default="false"/>
+            <composite:attribute name="timeout" type="java.lang.Integer" required="false" default="30000" />
+            <composite:attribute name="showDetail" type="java.lang.Boolean" required="false" default="true" />
+            <composite:attribute name="showSummary" type="java.lang.Boolean" required="false" default="true" />
+            <composite:attribute name="closeble" type="java.lang.Boolean" required="false" default="false" />            
+            <composite:attribute name="globalOnly" type="java.lang.Boolean" required="false" default="false" />            
+            <composite:attribute name="autoUpdate" type="java.lang.Boolean" required="false" default="true" displayName="true" expert="true" />
+        </composite:interface>
+        <composite:implementation>
+
+            <h:panelGroup layout="span">
+                <h:messages showDetail="#{cc.attrs.showDetail}" showSummary="#{cc.attrs.showSummary}" id="#{cc.attrs.id}" styleClass="alert b_alert_#{cc.attrs.id} alert-dismissable" warnClass="b_alert_in_#{cc.attrs.id} alert-warning" infoClass="b_alert_in_#{cc.attrs.id} #{cc.attrs.success ? 'alert-success' : 'alert-info'}" fatalClass="b_alert_in_#{cc.attrs.id} alert-danger" errorClass="b_alert_in_#{cc.attrs.id} alert-danger" globalOnly="#{cc.attrs.globalOnly}">
+                    <f:attribute name="escape" value="false"/>
+                    <f:attribute name="role" value="alert"/>
+                </h:messages>        
+            </h:panelGroup>
+            <c:choose>
+                <c:when test="#{cc.attrs.hide}">
+                    <script type="text/javascript" async="false">
+                        $(document).ready(function () {
+                            $(".b_alert_#{cc.attrs.id}").fadeOut(#{cc.attrs.timeout});
+                        });
+                    </script>
+                </c:when>
+            </c:choose>
+            <c:choose>
+                <c:when test="#{cc.attrs.closeble}" >
+                    <script async="false">
+                        $(document).ready(function () {
+                            $(".b_alert_in_#{cc.attrs.id}").append('<span class="close b_close_alert_in_#{cc.attrs.id}" data-dismiss="alert" style="margin-right: 15px;">x</span>');
+                        });
+                    </script>
+                </c:when>
+            </c:choose>
+        </composite:implementation>
+    </h:body>
+</html>

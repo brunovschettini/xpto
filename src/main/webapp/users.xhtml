@@ -1,0 +1,132 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="template/templateAdmin.xhtml">
+        <ui:define name="title">
+            Usuários
+        </ui:define>
+        <ui:define name="meta_head">
+        </ui:define>
+        <ui:define name="content">            
+            <strong>Usuários</strong>
+            <hr />
+            <h:form id="form_users">
+                <f:passThroughAttribute name="autocomplete" value="off" />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h:panelGroup layout="span">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <h:panelGroup  id="i_filters">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <br />
+                                                        <h:selectOneMenu value="#{usersMB.by}" styleClass="form-control">
+                                                            <f:ajax event="change" render="@this i_filters" execute="@form" listener="#{usersMB.setQ('')}"/>
+                                                            <f:selectItem itemLabel="Filtro" itemValue=""  />
+                                                            <f:selectItem itemLabel="Nome" itemValue="name"  />
+                                                            <f:selectItem itemLabel="Documento" itemValue="document"  />
+                                                            <f:selectItem itemLabel="Nascimento" itemValue="birthday"  />
+                                                            <f:selectItem itemLabel="Login" itemValue="login"  />
+                                                            <f:selectItem itemLabel="Email" itemValue="email"  />
+                                                            <f:selectItem itemLabel="Celular" itemValue="mobile_phone"  />
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                    <div class="col-lg-7">
+                                                        <br />
+                                                        <h:inputText value="#{usersMB.q}" disabled="#{usersMB.by eq ''}" 
+                                                                     styleClass="form-control"
+                                                                     onkeyup="if (event.keyCode === 13) {
+                                                                                 document.getElementById('form_users:btnfindusers').click();
+                                                                             }"
+                                                                     >
+                                                            <f:passThroughAttribute name="placeholder" value="Descrição da pesquisa" />
+                                                        </h:inputText>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <br />
+                                                        <h:commandLink value="PESQUISAR" styleClass="btn btn-default form-control" id="btnfindusers">
+                                                            <f:ajax event="click" render=":form_users:i_result_list" execute="@form" listener="#{usersMB.loadListUsers}" onevent="statusbaroverlay"/>
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </h:panelGroup>
+                                    </div> 
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h:commandLink value="CADASTRAR" action="#{callPageMB.page('user')}" styleClass="btn btn-primary btn-lg" />
+                                    </div>
+                                </div>
+                            </div>
+                        </h:panelGroup>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Usuários</div>
+                            <h:panelGroup layout="block" id="i_result_list">
+                                <div class="table-responsive">
+                                    <h:dataTable value="#{usersMB.listUsers}" var="user" styleClass="table table-striped table-hover table-scroll-max">
+                                        <h:column>
+                                            <h:commandLink action="#{usersMB.edit(user)}" value="##{user.id}" immediate="true" styleClass="btn btn-default" />
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                Nome        
+                                            </f:facet>
+                                            #{user.person.name}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                Apelido
+                                            </f:facet>
+                                            #{user.nickname}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                Email     
+                                            </f:facet>
+                                            #{user.email}
+                                        </h:column>
+                                        <h:column>
+                                            #{user.active ? 'ATIVO' : 'INATIVO'}
+                                        </h:column>
+                                    </h:dataTable>
+                                </div>
+                            </h:panelGroup>
+                            <!-- 
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="#" aria-label="Previous">
+                                            <span aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li>
+                                        <a href="#" aria-label="Next">
+                                            <span aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <h:body>
+        <composite:interface>
+            <composite:attribute name="id" type="java.lang.String" required="false" />
+            <composite:attribute name="role" type="java.lang.String" required="false" default="dialog"/>
+            <composite:attribute name="header" type="java.lang.String" required="false" />
+            <composite:attribute name="footer" type="java.lang.String" required="false" default="" />
+            <composite:attribute name="title" type="java.lang.String" required="true" default="" />
+            <composite:attribute name="styleClass" type="java.lang.String" required="false" default="" />
+            <composite:attribute name="panelClass" type="java.lang.String" required="false" default="panel-default" />
+            <composite:attribute name="style" type="java.lang.String" required="false" default="" />
+            <composite:attribute name="activeIndex" type="java.lang.Boolean" required="false" default="false" />
+            <composite:facet name="header" />
+            <composite:facet name="footer" />
+            <composite:facet name="title" />
+        </composite:interface>
+        <composite:implementation>
+            <c:if test="#{cc.attrs.rendered and not empty cc.attrs.title}">
+                <div class="panel #{cc.attrs.panelClass}">
+                    <div class="panel-heading" role="tab" id="bs_head_#{cc.attrs.id}">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#bs_accordion_option_#{cc.attrs.id}" aria-expanded="true" aria-controls="collapseOne">
+                                #{cc.attrs.title}
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="bs_accordion_option_#{cc.attrs.id}" class="panel-collapse collapse #{cc.attrs.activeIndex ? 'in' : ''}" role="tabpanel" aria-labelledby="bs_accordion_option_labelldby_#{cc.attrs.id}">
+                        <div class="panel-body">
+                            <composite:insertChildren />
+                        </div>
+                    </div>
+                </div>
+            </c:if>            
+        </composite:implementation>
+    </h:body>
+</html>

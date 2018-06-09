@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:panelGroup id="ui_sf_message_warn" layout="span">
+        <script type="text/javascript">
+            $( document ).ready(function() {
+                $(".alert-warning-fadeout").fadeOut(30000);
+            });
+        </script>
+        <h:messages showDetail="true" showSummary="true" styleClass="alert alert-warning alert-warning-fadeout">
+            <f:attribute name="escape" value="false"/>            
+        </h:messages>
+    </h:panelGroup>
+</ui:composition>

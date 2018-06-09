@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <composite:interface>
+            <composite:attribute name="widgetVar" type="java.lang.String" required="false" default="#{cc.id}"  />
+            <composite:attribute name="disabled" type="java.lang.Boolean" required="false" default="false" />
+            <composite:attribute name="rendered" type="java.lang.Boolean" required="false" default="true" />
+            <composite:attribute name="readonly" type="java.lang.Boolean" required="false" default="false" />
+            <composite:attribute name="title" type="java.lang.String" required="false" default="" />
+            <composite:attribute name="value" type="java.lang.String" required="false" default="" />
+            <composite:attribute name="styleClass" type="java.lang.String" required="false" default="" />            
+            <composite:attribute name="min" type="java.lang.String" required="true" default="0" />
+            <composite:attribute name="max" type="java.lang.String" required="true" default="100" />
+            <composite:attribute name="label" type="java.lang.String" required="false" default="" />
+            <composite:attribute name="step" type="java.lang.String" required="false" default="0" />
+        </composite:interface>
+        <composite:implementation>
+            <c:if test="#{cc.attrs.rendered}">
+                <h:inputText
+                    id="#{cc.attrs.widgetVar}"
+                    value="#{cc.attrs.value}" 
+                    title="#{cc.attrs.title}" 
+                    styleClass="form-control #{cc.attrs.styleClass}" 
+                    readonly="#{cc.attrs.readonly}" 
+                    disabled="#{cc.attrs.disabled}">
+                    <f:passThroughAttribute name="type" value="range" />                    
+                    <f:passThroughAttribute name="min" value="#{cc.attrs.min}" />
+                    <f:passThroughAttribute name="max" value="#{cc.attrs.max}" />
+                    <f:passThroughAttribute name="step" value="#{cc.attrs.step}" />
+                </h:inputText>
+            </c:if>
+        </composite:implementation>
+    </h:body>
+</html>

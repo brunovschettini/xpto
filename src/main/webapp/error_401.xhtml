@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition template="template/template.xhtml">
+        <ui:define name="title">Erro 401</ui:define>
+        <ui:define name="content">
+            <h:form id="form_401">
+                <div class="container" >
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel">
+                                <h1 style="font-weight: bold">401 - Unauthorized (en-US) / Não autorizado (pt-BR)</h1>                        
+                                <br />
+                                <br />
+                                <p>Necessário estar logado para ter acesso a esta página.</p>
+                                <br />
+                                <br />
+                                <p>
+                                    <h:outputLink value="login.xhtml?redirect=true" style="font-weight: bold">FAÇA SEU LOGIN</h:outputLink>
+                                </p>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
