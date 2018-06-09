@@ -2,6 +2,7 @@ package br.com.xptosystems.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
@@ -38,7 +39,7 @@ public class Defatuls {
             }
             String json = null;
             try {
-                json = FileUtils.readFileToString(file);
+                json = FileUtils.readFileToString(file, Charset.defaultCharset());
             } catch (IOException ex) {
                 Logger.getLogger(Defatuls.class.getName()).log(Level.SEVERE, null, ex);
             }

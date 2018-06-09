@@ -66,6 +66,6 @@
         </navigation-case>
     </navigation-rule>
     <lifecycle>
-        <phase-listener>br.com.gestor.security.access.AuthorizationListener</phase-listener> 
+        <phase-listener>br.com.xptosystems.security.access.AuthorizationListener</phase-listener> 
     </lifecycle>
 </faces-config>

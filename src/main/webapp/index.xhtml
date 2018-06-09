@@ -17,16 +17,15 @@
             }            
         </style>
         <ui:define name="content">
-            <!-- <h:body onload="# {accessControlMB.sessionActive}" /> -->
             <h:form prependId="false">
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4"></div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="panel panel-default" style="margin-top: 30px">
                             <div class="panel-heading">
-                                <h3>Gestor</h3>                                
+                                <h3>Xpto Systems</h3>                                
                             </div>
-                            <ui:include src="template/info.xhtml" />
+                            <ui:include src="layout/info.xhtml" />
                             <div class="panel-body">
                                 <div class="form-group">
                                     <label>Usuário</label>
@@ -39,7 +38,7 @@
                                 <div class="form-group">
                                     <h:commandButton value="ENTRAR" action="#{accessControlMB.authUsers()}" styleClass="btn btn-default" />
                                 </div>
-                                <ui:include src="template/warn.xhtml" />
+                                <ui:include src="layout/warn.xhtml" />
                             </div>
                         </div>
                     </div>

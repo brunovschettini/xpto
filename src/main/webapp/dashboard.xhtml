@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <ui:composition template="layout/private.xhtml">
+        <ui:define name="title">
+            PAINEL ADMINISTRATIVO
+        </ui:define>        
+        <ui:define name="meta_head">
+            <script type="text/javascript">
+                $(function () {
+
+                    $(".btn-fa-hover").hover(
+                            function () {
+                                $(this).stop().animate({"opacity": "0.8"}, "fast");
+                            },
+                            function () {
+                                $(this).stop().animate({"opacity": "1"}, "slow");
+                            }
+                    );
+
+                });
+            </script>
+        </ui:define>
+        <ui:define name="content">
+            <h:form prependId="false">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4>
+                            <strong>GERAL</strong>
+                        </h4>                    
+                    </div>                
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4" >
+                        <h:commandLink action="#{callPageMB.page('dashboard')}" styleClass="btn-fa-hover btn btn-lg btn-sq-md no-radius" style="background: black;">
+                            <i class="fa fa-dashboard fa-5x font-color-white" aria-hidden="true"></i>
+                        </h:commandLink>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                        <h:commandLink action="#{callPageMB.page('users')}" styleClass="btn-fa-hover btn btn-lg btn-sq-md no-radius" style="background: #e1e1e1;">
+                            <i class="fa fa-user fa-5x font-color-white" aria-hidden="true"></i>
+                        </h:commandLink>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                        <h:commandLink action="#{callPageMB.page('cities')}" styleClass="btn-fa-hover btn btn-lg btn-sq-md no-radius" style="background: #ff3333;">
+                            <i class="fa fa-building fa-5x font-color-white" aria-hidden="true"></i>
+                        </h:commandLink>
+                    </div>
+                </div>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>

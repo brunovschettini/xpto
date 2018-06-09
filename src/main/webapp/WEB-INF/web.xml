@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-    
+    <!-- 
+    <servlet>
+        <servlet-name>Rest With Jersey2</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>br.com.gestor.resource</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet> 
+    <servlet-mapping>
+        <servlet-name>Rest With Jersey2</servlet-name>
+        <url-pattern>/ws/*</url-pattern>
+    </servlet-mapping>
+     -->
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
@@ -11,7 +25,7 @@
         <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
         <param-value>client</param-value>
     </context-param>
-        
+            
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -44,7 +58,13 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
-     
+    
+    <!-- 
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error_500.xhtml</location>
+    </error-page> -->
+    
     <error-page>
         <error-code>404</error-code>
         <location>/error_404.xhtml</location>
