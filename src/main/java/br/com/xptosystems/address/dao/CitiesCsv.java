@@ -8,12 +8,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 
 public class CitiesCsv {
 
@@ -168,9 +173,9 @@ public class CitiesCsv {
 
                         }
                         break;
-                    case "cities":
+                    case "name":
                         try {
-                            if (list.get(i).getName().toUpperCase().contains(query.toUpperCase())) {
+                            if (list.get(i).getName().toUpperCase().contains(query.toUpperCase()) || list.get(i).getName().toUpperCase().endsWith(query.toUpperCase())) {
                                 newList.add(list.get(i));
                             }
                         } catch (Exception e) {
@@ -252,7 +257,25 @@ public class CitiesCsv {
                     return "Código do IBGE já cadastrado!";
                 }
             }
-
+//            try (
+//                    Reader reader = Files.newBufferedReader(Paths.);
+//                    CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);) {
+//                for (CSVRecord csvRecord : csvParser) {
+//                    // Accessing Values by Column Index
+//                    String name = csvRecord.get(0);
+//                    String email = csvRecord.get(1);
+//                    String phone = csvRecord.get(2);
+//                    String country = csvRecord.get(3);
+//                    
+//                    System.out.println("Record No - " + csvRecord.getRecordNumber());
+//                    System.out.println("---------------");
+//                    System.out.println("Name : " + name);
+//                    System.out.println("Email : " + email);
+//                    System.out.println("Phone : " + phone);
+//                    System.out.println("Country : " + country);
+//                    System.out.println("---------------\n\n");
+//                }
+//            }
             return "";
         } catch (Exception e) {
             return e.getMessage();
@@ -349,7 +372,7 @@ public class CitiesCsv {
                 switch (column) {
                     case "ibde_id":
                         try {
-                            map.put(list.get(i).getIbge_id() + "", list.get(i).getIbge_id()+ "");
+                            map.put(list.get(i).getIbge_id() + "", list.get(i).getIbge_id() + "");
                         } catch (Exception e) {
 
                         }
