@@ -1,89 +1,42 @@
 package br.com.xptosystems.address;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Digits;
+public class Cities implements Comparable<Cities> {
 
-@Entity
-@Table(name = "cities",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"name", "uf", "capital"})
-)
-public class Cities implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-    @Column(name = "ibge_id", unique = true, nullable = false)
     private Long ibgeId;
-    @Column(name = "uf", length = 2, nullable = false)
     private String uf;
-    @Column(name = "name", length = 150, nullable = false)
     private String name;
-    @Column(name = "capital", nullable = false, columnDefinition = "boolean default 0")
     private Boolean capital;
-    @Column(name = "lon", nullable = true, precision = 10, scale = 12)
     private Double lon;
-    @Column(name = "lat", nullable = true, precision = 10, scale = 12)
     private Double lat;
-    @Column(name = "no_accents", length = 150, nullable = false)
-    private String noAccents;
-    @Column(name = "alternative_accents", length = 150, nullable = false)
-    private String alternativeNames;
-    @Column(name = "micro_region", length = 100, nullable = false)
-    private String microRegion;
-    @Column(name = "meso_region", length = 100, nullable = false)
-    private String mesoRegion;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "register_date", nullable = false)
-    private Date registerDate;
+    private String no_accents;
+    private String alternative_names;
+    private String micro_region;
+    private String meso_region;
 
     public Cities() {
-        this.id = null;
         this.ibgeId = null;
         this.uf = "";
         this.name = "";
         this.capital = false;
         this.lon = null;
         this.lat = null;
-        this.noAccents = "";
-        this.alternativeNames = "";
-        this.microRegion = "";
-        this.mesoRegion = "";
-        this.registerDate = new Date();
+        this.no_accents = "";
+        this.alternative_names = "";
+        this.micro_region = "";
+        this.meso_region = "";
     }
 
-    public Cities(Long id, Long ibgeId, String uf, String name, Boolean capital, Double lon, Double lat, String noAccents, String alternativeNames, String microRegion, String mesoRegion, Date registerDate) {
-        this.id = id;
+    public Cities(Long ibgeId, String uf, String name, Boolean capital, Double lon, Double lat, String no_accents, String alternative_names, String micro_region, String meso_region) {
         this.ibgeId = ibgeId;
         this.uf = uf;
         this.name = name;
         this.capital = capital;
         this.lon = lon;
         this.lat = lat;
-        this.noAccents = noAccents;
-        this.alternativeNames = alternativeNames;
-        this.microRegion = microRegion;
-        this.mesoRegion = mesoRegion;
-        this.registerDate = registerDate;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.no_accents = no_accents;
+        this.alternative_names = alternative_names;
+        this.micro_region = micro_region;
+        this.meso_region = meso_region;
     }
 
     public Long getIbgeId() {
@@ -134,44 +87,41 @@ public class Cities implements Serializable {
         this.lat = lat;
     }
 
-    public String getNoAccents() {
-        return noAccents;
+    public String getNo_accents() {
+        return no_accents;
     }
 
-    public void setNoAccents(String noAccents) {
-        this.noAccents = noAccents;
+    public void setNo_accents(String no_accents) {
+        this.no_accents = no_accents;
     }
 
-    public String getAlternativeNames() {
-        return alternativeNames;
+    public String getAlternative_names() {
+        return alternative_names;
     }
 
-    public void setAlternativeNames(String alternativeNames) {
-        this.alternativeNames = alternativeNames;
+    public void setAlternative_names(String alternative_names) {
+        this.alternative_names = alternative_names;
     }
 
-    public String getMicroRegion() {
-        return microRegion;
+    public String getMicro_region() {
+        return micro_region;
     }
 
-    public void setMicroRegion(String microRegion) {
-        this.microRegion = microRegion;
+    public void setMicro_region(String micro_region) {
+        this.micro_region = micro_region;
     }
 
-    public String getMesoRegion() {
-        return mesoRegion;
+    public String getMeso_region() {
+        return meso_region;
     }
 
-    public void setMesoRegion(String mesoRegion) {
-        this.mesoRegion = mesoRegion;
+    public void setMeso_region(String meso_region) {
+        this.meso_region = meso_region;
     }
 
-    public Date getRegisterDate() {
-        return registerDate;
-    }
-
-    public void setRegisterDate(Date registerDate) {
-        this.registerDate = registerDate;
+    @Override
+    public int compareTo(Cities c) {
+        return this.name.compareTo(c.getName());
     }
 
 }

@@ -11,8 +11,8 @@ public class StatusWS  {
 
     @GET
     @Path("/active")
-    @Produces({MediaType.TEXT_HTML})
+    @Produces({MediaType.APPLICATION_JSON})
     public synchronized Response active() {
-        return Response.status(200).entity("1").build();
+        return Response.status(200).entity("{\"status\":\"1\"}").build();
     }
 }

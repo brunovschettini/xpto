@@ -5,67 +5,6 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <from-view-id>/*</from-view-id>
     <navigation-rule>
-        <navigation-case>
-            <from-outcome>error_401</from-outcome>
-            <to-view-id>/error_401.xhtml</to-view-id>
-            <redirect />
-        </navigation-case>        
-        <navigation-case>
-            <from-outcome>error_403</from-outcome>
-            <to-view-id>/error_403.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>error_404</from-outcome>
-            <to-view-id>/error_404.xhtml</to-view-id>          
-            <redirect />
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>error_500</from-outcome>
-            <to-view-id>/error_500.xhtml</to-view-id>           
-            <redirect />
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>index</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>           
-            <redirect />
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>login</from-outcome>
-            <to-view-id>/login.xhtml</to-view-id>  
-            <redirect />        
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>expired</from-outcome>
-            <to-view-id>/expired.xhtml</to-view-id>    
-            <redirect />       
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>dashboard</from-outcome>
-            <to-view-id>/dashboard.xhtml</to-view-id>
-            <redirect />
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>users</from-outcome>
-            <to-view-id>/users.xhtml</to-view-id>
-            <redirect />
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>user</from-outcome>
-            <to-view-id>/user.xhtml</to-view-id>
-            <redirect />
-        </navigation-case>        
-        <navigation-case>
-            <from-outcome>cities</from-outcome>
-            <to-view-id>/cities.xhtml</to-view-id>
-            <redirect />
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>city</from-outcome>
-            <to-view-id>/city.xhtml</to-view-id>
-            <redirect />
-        </navigation-case>
+        
     </navigation-rule>
-    <lifecycle>
-        <phase-listener>br.com.xptosystems.security.access.AuthorizationListener</phase-listener> 
-    </lifecycle>
 </faces-config>

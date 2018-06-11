@@ -15,7 +15,6 @@ public class ApplicationConfig extends Application {
     }
  
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(br.com.xptosystems.ws.AuthWS.class);
         resources.add(br.com.xptosystems.ws.CitiesWS.class);
         resources.add(br.com.xptosystems.ws.StatusWS.class);
     }
