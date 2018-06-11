@@ -33,6 +33,19 @@ public class UsersDao extends DB {
         return null;
     }
 
+    public Users authUser(String login, String password) throws NoSuchAlgorithmException {
+        try {
+            Query query = getEntityManager().createQuery("SELECT U FROM Users AS U WHERE U.email = :email AND U.password = :password ");
+            query.setParameter("email", login);
+            query.setParameter("password", password);
+            return (Users) query.getSingleResult();
+
+        } catch (Exception e) {
+        }
+
+        return null;
+    }
+
     public boolean existUserEmail(String mail) {
         mail = mail.trim().toLowerCase();
         try {

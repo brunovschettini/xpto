@@ -28,8 +28,6 @@ public class Users implements Serializable {
     private String password;
     @Column(name = "active")
     private Boolean active;
-    @Column(name = "confirm_code", length = 255, nullable = true)
-    private String confirmCode;
     @Column(name = "nickname", length = 150, unique = true)
     private String nickname;
     @Temporal(TemporalType.TIMESTAMP)
@@ -42,18 +40,16 @@ public class Users implements Serializable {
         this.name = "";
         this.password = "";
         this.active = false;
-        this.confirmCode = "";
         this.nickname = "";
         this.registerDate = new Date();
     }
 
-    public Users(Long id, String name, String email, String password, Boolean active, String confirmCode, String nickname, Date registerDate) {
+    public Users(Long id, String name, String email, String password, Boolean active,  String nickname, Date registerDate) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.active = active;
-        this.confirmCode = confirmCode;
+        this.active = active; 
         this.nickname = nickname;
         this.registerDate = registerDate;
     }
@@ -102,14 +98,7 @@ public class Users implements Serializable {
         this.active = active;
     }
 
-    public String getConfirmCode() {
-        return confirmCode;
-    }
-
-    public void setConfirmCode(String confirmCode) {
-        this.confirmCode = confirmCode;
-    }
-
+ 
     public String getNickname() {
         return nickname;
     }

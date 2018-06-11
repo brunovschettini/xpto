@@ -26,7 +26,7 @@ public class DB {
                 properties.put("allowMultiQueries", "true");
                 properties.put("autoReconnect", "true");
                 properties.put("checkoutTimeout", "1000");
-                EntityManagerFactory emf = Persistence.createEntityManagerFactory("xptop_systems", properties);
+                EntityManagerFactory emf = Persistence.createEntityManagerFactory("xpto_systems", properties);
                 String createTable = "";
                 if (createTable.equals("criar")) {
                     // properties.put(EntityManagerFactoryProvider.DDL_GENERATION, EntityManagerFactoryProvider.CREATE_ONLY);

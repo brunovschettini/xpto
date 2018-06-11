@@ -20,275 +20,34 @@
                     <div id="navbar" class="navbar-collapse collapse"  style="overflow: hidden">
                         <h:form prependId="false">
                             <ul class="nav navbar-nav navbar-right">                   
-                                <c:if test="#{accessControlMB.renderedModule(1) and accessControlMB.renderedFinancialGroupClint(1)}">
-                                    <li class="dropdown">
-                                        <h:column >
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SERVIÇOS<span class="caret"></span></a>
-                                            <ul class="dropdown-menu">
-                                                <c:if test="#{accessControlMB.renderedRoutine(11)}">
-                                                    <li>
-                                                        <h:commandLink action="#{callPageMB.page('task_schedule')}">
-                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                            Agenda
-                                                        </h:commandLink>
-                                                    </li>
-                                                </c:if>
-                                                <li class="divider"></li>
-                                                <li class="dropdown-submenu">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros</a>
-                                                    <ul class="dropdown-menu">
-                                                        <c:if test="#{accessControlMB.renderedRoutine(9)}">
-                                                            <li><h:commandLink value="Serviços" action="#{callPageMB.page('services')}" /></li>
-                                                        </c:if>
-                                                        <c:if test="#{accessControlMB.renderedRoutine(17)}">
-                                                            <li><h:commandLink value="Conveniados"  action="#{callPageMB.page('agreements')}" /></li>
-                                                        </c:if>
-                                                        <c:if test="#{accessControlMB.renderedRoutine(20)}">
-                                                            <li>
-                                                                <h:commandLink action="#{callPageMB.page('partners')}">
-                                                                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
-                                                                    Parceiros
-                                                                </h:commandLink>
-                                                            </li>
-                                                        </c:if>
-                                                        <c:if test="#{accessControlMB.renderedRoutine(12)}">
-                                                            <li><h:commandLink value="Serviços da Rotina"  action="#{callPageMB.page('services_routine')}" /></li>
-                                                        </c:if>
-                                                        <c:if test="#{accessControlMB.renderedRoutine(19)}">
-                                                            <li><h:commandLink value="Serviços da Categoria"  action="#{callPageMB.page('services_categories')}" /></li>
-                                                        </c:if>
-                                                    </ul>
-                                                </li>
-                                                <li class="divider"></li>
-                                                <li class="dropdown-submenu">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relatórios</a>
-                                                </li> 
-                                            </ul>
-                                        </h:column>
-                                    </li>
-                                </c:if> 
-                                <c:if test="false">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ESTACIONAMENTO<span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><h:commandLink value="Estacionamento" action="#{callPageMB.page('parking')}" /></li>
-                                            <li><h:commandLink value="Pessoas" action="#{callPageMB.page('natural_persons')}"/></li>
-                                            <li><h:commandLink value="Empresas" action="#{callPageMB.page('legal_persons')}"/></li>
-                                            <li class="dropdown-header">Suporte</li>
-                                            <li><h:commandLink value="Marcas/Carros" action="#{callPageMB.page('brand_car')}"/></li>
-                                        </ul>
-                                    </li>
-                                </c:if> 
-
-                                <c:if test="#{accessControlMB.renderedModule(6) and accessControlMB.renderedFinancialGroupClint(4)}">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">STORE<span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <c:if test="#{accessControlMB.renderedRoutine(35)}">
-                                                <li>
-                                                    <h:commandLink action="#{callPageMB.page('sale', 'saleMB')}">
-                                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        Frente de Caixa
-                                                    </h:commandLink>
-                                                </li>
-                                            </c:if>
-                                            <c:if test="#{accessControlMB.renderedRoutine(38)}">
-                                                <li>
-                                                    <h:commandLink action="#{callPageMB.page('orders', 'salesMB')}">
-                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                        Lanchonete
-                                                    </h:commandLink>
-                                                </li>                                                 
-                                            </c:if>
-                                            <c:if test="#{accessControlMB.renderedRoutine(36)}">
-                                                <li>
-                                                    <h:commandLink action="#{callPageMB.page('sales', 'salesMB')}">
-                                                        <i class="fa fa-list" aria-hidden="true"></i>
-                                                        Vendas/Pedidos
-                                                    </h:commandLink>
-                                                </li>                                                 
-                                            </c:if>
-                                            <c:if test="#{accessControlMB.renderedRoutine(41)}">
-                                                <li>
-                                                    <h:commandLink action="#{callPageMB.page('orders_status', 'salesMB')}">
-                                                        <i class="fa fa-list" aria-hidden="true"></i>
-                                                        Status
-                                                    </h:commandLink>
-                                                </li>                                                 
-                                            </c:if>
-                                            <li class="divider"></li>
-                                            <li class="dropdown-submenu">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros</a>
-                                                <ul class="dropdown-menu">
-                                                    <c:if test="#{accessControlMB.renderedRoutine(34)}">
-                                                        <li>
-                                                            <h:commandLink action="#{callPageMB.page('products')}">
-                                                                <i class="fa fa-product-hunt" aria-hidden="true"></i>
-                                                                Produtos
-                                                            </h:commandLink>
-                                                        </li>
-                                                    </c:if>
-                                                    <c:if test="#{accessControlMB.renderedRoutine(31)}">
-                                                        <li><h:commandLink value="Fornecedores" action="#{callPageMB.page('suppliers')}"/></li>
-                                                    </c:if>
-                                                    <c:if test="#{accessControlMB.renderedRoutine(43)}">
-                                                        <li><h:commandLink value="Menu do dia" action="#{callPageMB.page('menu', 'menuMB')}"/></li>
-                                                    </c:if>
-                                                    <c:if test="#{accessControlMB.renderedRoutine(44)}">
-                                                        <li><h:commandLink value="Config. Prod. Dia" action="#{callPageMB.page('product_day_defaults', 'productDayDefaultsMB')}"/></li>
-                                                    </c:if>
-                                                    <c:if test="#{accessControlMB.renderedRoutine(28)}">
-                                                        <li><h:commandLink value="Categorias" action="#{callPageMB.page('product_categories')}"/></li>
-                                                    </c:if>
-                                                    <c:if test="#{accessControlMB.renderedRoutine(29)}">
-                                                        <li><h:commandLink value="Subcategorias" action="#{callPageMB.page('product_subcategories')}"/></li>
-                                                    </c:if>
-                                                    <c:if test="#{accessControlMB.renderedRoutine(45)}">
-                                                        <li><h:commandLink value="Subcategorias e Rotinas" action="#{callPageMB.page('product_subcategories_routine')}"/></li>
-                                                    </c:if>
-                                                    <c:if test="#{accessControlMB.renderedRoutine(37)}">
-                                                        <li><h:commandLink value="Unidades" action="#{callPageMB.page('units')}"/></li>
-                                                    </c:if>
-                                                    <c:if test="#{accessControlMB.renderedRoutine(39)}">
-                                                        <li><h:commandLink value="Mesas" action="#{callPageMB.page('tables')}"/></li>
-                                                    </c:if>
-                                                    <c:if test="#{accessControlMB.renderedRoutine(49)}">
-                                                        <li><h:commandLink value="Delivery Taxas" action="#{callPageMB.page('delivery_services')}"/></li>
-                                                    </c:if>
-                                                </ul>
-                                            </li>                                                     
-                                            <li class="divider"></li>
-                                            <li class="dropdown-submenu">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relatórios</a>
-                                            </li>                                                     
-                                        </ul>
-                                    </li>
-                                </c:if> 
-
-                                <c:if test="#{accessControlMB.renderedModule(3)}">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">FINANCEIRO <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <c:if test="#{accessControlMB.renderedRoutine(13)}">
-                                                <li><h:commandLink value="Movimentos"  action="#{callPageMB.page('moviments')}"/></li>
-                                            </c:if>
-                                            <c:if test="#{accessControlMB.renderedRoutine(18)}">
-                                                <li><h:commandLink value="Lançamentos"  action="#{callPageMB.page('entry')}"/></li>
-                                            </c:if>
-                                            <li class="divider"></li>
-                                            <li class="dropdown-submenu">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros</a>
-                                                <ul class="dropdown-menu">
-                                                    <c:if test="#{accessControlMB.renderedRoutine(32)}">
-                                                        <li><h:commandLink value="Grupos do Cliente"  action="#{callPageMB.page('financial_group_client')}" /></li>                                                                                              
-                                                    </c:if>
-                                                    <c:if test="#{accessControlMB.renderedRoutine(25)}">
-                                                        <li><h:commandLink value="Rotinas do Grupo"  action="#{callPageMB.page('financial_group_routine')}" /></li>
-                                                    </c:if>
-                                                </ul>
-                                            </li>
-                                            <li class="divider"></li>
-                                            <li class="dropdown-submenu">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relatórios</a>
-                                            </li>                                                 
-                                        </ul>
-                                    </li>                                        
-                                </c:if> 
-                                <c:if test="true">
                                     <li class="dropdown">
                                         <h:column >
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CADASTROS<span class="caret"></span></a>
                                             <ul class="dropdown-menu">
-                                                <c:if test="#{accessControlMB.renderedRoutine(7)}">
-                                                    <li>
-                                                        <h:commandLink action="#{callPageMB.page('natural_persons')}">
-                                                            <i class="fa fa-users" aria-hidden="true"></i>
-                                                            Pessoas
-                                                        </h:commandLink>
-                                                    </li>
-                                                </c:if>
-                                                <c:if test="#{accessControlMB.renderedRoutine(24)}">
-                                                    <li>
-                                                        <h:commandLink action="#{callPageMB.page('legal_persons')}">
-                                                            <i class="fa fa-building" aria-hidden="true"></i>
-                                                            Empresas
-                                                        </h:commandLink>
-                                                    </li>
-                                                </c:if>
-                                                <c:choose>                                                                
-                                                    <c:when test="true">
-                                                        <!-- <li class="dropdown-submenu">
-                                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hover me for more options</a>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a tabindex="-1" href="#">Second level</a></li>
-                                                                <li class="dropdown-submenu">
-                                                                    <a href="#">Even More..</a>
-                                                                    <ul class="dropdown-menu">
-                                                                        <li><a href="#">3rd level</a></li>
-                                                                        <li><a href="#">3rd level</a></li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li><a href="#">Second level</a></li>
-                                                                <li><a href="#">Second level</a></li>
-                                                            </ul>
-                                                        </li> -->
-                                                    </c:when>
-                                                </c:choose>
+                                                <li class="dropdown-submenu">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cidades</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><h:commandLink value="Manutenção" action="#{callPageMB.page('cities')}" /></li>
+                                                        <li><h:commandLink value="Importação" action="#{callPageMB.page('import_cities')}" /></li>
+                                                    </ul>
+                                                </li>
                                             </ul>
                                         </h:column>
                                     </li>
-                                </c:if> 
-                                <c:if test="#{accessControlMB.renderedModule(4)}">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SEGURANÇA<span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <c:if test="#{accessControlMB.renderedRoutine(5)}">
-                                                <li>
-                                                    <h:commandLink action="#{callPageMB.page('users')}">
-                                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                                        Usuários
-                                                    </h:commandLink>
-                                                </li>
-                                            </c:if>
-                                            <c:if test="#{accessControlMB.renderedRoutine(51)}">
-                                                <li>
-                                                    <h:commandLink action="#{callPageMB.page('security_group_routines', 'securityGroupRoutinesMB')}">
-                                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                                        Rotinas Grupo Segurança
-                                                    </h:commandLink>
-                                                </li>
-                                            </c:if>
-                                            <c:if test="#{accessControlMB.renderedRoutine(50)}">
-                                                <li>
-                                                    <h:commandLink action="#{callPageMB.page('security_group')}">
-                                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                                        Grupo de Segurança
-                                                    </h:commandLink>
-                                                </li>
-                                            </c:if>
-                                            <c:if test="#{accessControlMB.masterClient}">
-                                                <li>
-                                                    <h:commandLink action="#{callPageMB.page('client')}">
-                                                        <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                                        Clientes
-                                                    </h:commandLink>
-                                                </li>
-                                                <li>
-                                                    <h:commandLink action="#{callPageMB.page('routines')}">
-                                                        <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                                        Rotinas
-                                                    </h:commandLink>
-                                                </li>
-                                                <li>
-                                                    <h:commandLink action="#{callPageMB.page('client_modules')}">
-                                                        <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                                        Módulos do Cliente
-                                                    </h:commandLink>
-                                                </li>
-                                            </c:if>
-                                        </ul>
-                                    </li>
-                                </c:if> 
+
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SEGURANÇA<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <h:commandLink action="#{callPageMB.page('users')}">
+                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                                Usuários
+                                            </h:commandLink>
+                                        </li>
+                                    </ul>
+                                </li>
+
                                 <li><h:commandLink value="SAIR" action="#{accessControlMB.logout}"/></li>                                
                             </ul>
                         </h:form>

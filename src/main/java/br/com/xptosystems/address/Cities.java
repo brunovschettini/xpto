@@ -32,19 +32,17 @@ public class Cities implements Serializable {
     private String name;
     @Column(name = "capital", nullable = false, columnDefinition = "boolean default 0")
     private Boolean capital;
-    @Digits(integer = 10, fraction = 12)
-    @Column(name = "lon", nullable = true)
-    private BigDecimal lon;
-    @Digits(integer = 10, fraction = 12)
-    @Column(name = "lat", nullable = true)
-    private BigDecimal lat;
+    @Column(name = "lon", nullable = true, precision = 10, scale = 12)
+    private Double lon;
+    @Column(name = "lat", nullable = true, precision = 10, scale = 12)
+    private Double lat;
     @Column(name = "no_accents", length = 150, nullable = false)
     private String noAccents;
     @Column(name = "alternative_accents", length = 150, nullable = false)
     private String alternativeNames;
     @Column(name = "micro_region", length = 100, nullable = false)
     private String microRegion;
-    @Column(name = "micro_region", length = 100, nullable = false)
+    @Column(name = "meso_region", length = 100, nullable = false)
     private String mesoRegion;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "register_date", nullable = false)
@@ -65,7 +63,7 @@ public class Cities implements Serializable {
         this.registerDate = new Date();
     }
 
-    public Cities(Long id, Long ibgeId, String uf, String name, Boolean capital, BigDecimal lon, BigDecimal lat, String noAccents, String alternativeNames, String microRegion, String mesoRegion, Date registerDate) {
+    public Cities(Long id, Long ibgeId, String uf, String name, Boolean capital, Double lon, Double lat, String noAccents, String alternativeNames, String microRegion, String mesoRegion, Date registerDate) {
         this.id = id;
         this.ibgeId = ibgeId;
         this.uf = uf;
@@ -120,19 +118,19 @@ public class Cities implements Serializable {
         this.capital = capital;
     }
 
-    public BigDecimal getLon() {
+    public Double getLon() {
         return lon;
     }
 
-    public void setLon(BigDecimal lon) {
+    public void setLon(Double lon) {
         this.lon = lon;
     }
 
-    public BigDecimal getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(BigDecimal lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 

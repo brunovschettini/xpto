@@ -15,19 +15,16 @@ import org.json.JSONObject;
 
 @ManagedBean
 @ViewScoped
-public class Defatuls {
+public class Defaults {
 
-    private String host;
-    private Integer port;
+    public static String WEBSERVICE;
 
-    public Defatuls() {
-        this.host = "";
-        this.port = 0;
+    public Defaults() {
+        WEBSERVICE = "";
     }
 
-    public Defatuls(String host, Integer port) {
-        this.host = host;
-        this.port = port;
+    public Defaults(String webservice) {
+        WEBSERVICE = webservice;
     }
 
     public void loadJson() {
@@ -41,16 +38,11 @@ public class Defatuls {
             try {
                 json = FileUtils.readFileToString(file, Charset.defaultCharset());
             } catch (IOException ex) {
-                Logger.getLogger(Defatuls.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Defaults.class.getName()).log(Level.SEVERE, null, ex);
             }
             JSONObject jSONObject = new JSONObject(json);
             try {
-                host = jSONObject.getString("host");
-            } catch (Exception e) {
-
-            }
-            try {
-                port = jSONObject.getInt("port");
+                WEBSERVICE = jSONObject.getString("webservice");
             } catch (Exception e) {
 
             }
@@ -59,31 +51,4 @@ public class Defatuls {
         }
     }
 
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public Integer getPort() {
-        return port;
-    }
-
-    public void setPort(Integer port) {
-        this.port = port;
-    }
-
-    public String getURL() {
-        loadJson();
-        String url = "";
-        if (!host.isEmpty()) {
-            url += host;
-        }
-        if (port > 0 && port != 80) {
-            url += ":" + port;
-        }
-        return url;
-    }
 }
