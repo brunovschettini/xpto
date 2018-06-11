@@ -37,31 +37,53 @@ public class CitiesCsv {
         try {
             List<Cities> list = this.db();
             Collections.sort(list, new UfComparator());
-            Map<Integer, String> map = new LinkedHashMap<>();
+            Map<String, Integer> map = new LinkedHashMap<>();
             String uf = "";
             int count = 1;
             for (int i = 0; i < list.size(); i++) {
-                if (uf.isEmpty() || uf.toUpperCase().equals(list.get(i).getUf().toUpperCase())) {
-                    map.put(count, list.get(i).getUf().toUpperCase());
+                if (uf.isEmpty() || !uf.toUpperCase().equals(list.get(i).getUf().toUpperCase())) {
+                    map.put(list.get(i).getUf().toUpperCase(), count);
                     count = 1;
+                    uf = list.get(i).getUf().toUpperCase();
                 } else {
                     count++;
-                    map.put(count, list.get(i).getUf().toUpperCase());
+                    map.put(list.get(i).getUf().toUpperCase(), count);
                 }
             }
             Ufs ufFirst = new Ufs();
             Ufs ufLast = new Ufs();
             int z = 0;
-            for (Map.Entry<Integer, String> entry : map.entrySet()) {
-                if (z == 0) {
-                    ufFirst = new Ufs(entry.getKey(), entry.getValue());
+            // MAIOR
+            String uf_maior = "";
+            int ct_maior = 0;
+            for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                if (ct_maior == 0) {
+                    ct_maior = entry.getValue();
+                    uf_maior = entry.getKey();
+                } else {
+                    if (entry.getValue() > ct_maior) {
+                        uf_maior = entry.getKey();
+                        ct_maior = entry.getValue();
+                    }
                 }
-                z++;
-                ufLast = new Ufs(entry.getKey(), entry.getValue());
             }
-
-            listUfAcumulador.add(ufLast);
+            String uf_menor = "";
+            int ct_menor = 0;
+            for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                if (ct_menor == 0) {
+                    ct_menor = entry.getValue();
+                    uf_menor = entry.getKey();
+                } else {
+                    if (entry.getValue() < ct_menor) {
+                        uf_menor = entry.getKey();
+                        ct_menor = entry.getValue();
+                    }
+                }
+            }
+            ufFirst = new Ufs("min", ct_menor, uf_menor);
+            ufLast = new Ufs("max", ct_maior, uf_maior);
             listUfAcumulador.add(ufFirst);
+            listUfAcumulador.add(ufLast);
             return listUfAcumulador;
         } catch (Exception e) {
         }
@@ -408,15 +430,18 @@ public class CitiesCsv {
 
     public class Ufs {
 
-        private Integer amount_cities;
+        private String type;
         private String name;
+        private Integer amount_cities;
 
         public Ufs() {
-            this.amount_cities = 0;
+            this.type = "";
             this.name = "";
+            this.amount_cities = 0;
         }
 
-        public Ufs(Integer amount_cities, String name) {
+        public Ufs(String type, Integer amount_cities, String name) {
+            this.type = type;
             this.amount_cities = amount_cities;
             this.name = name;
         }
@@ -435,6 +460,14 @@ public class CitiesCsv {
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
         }
 
     }
