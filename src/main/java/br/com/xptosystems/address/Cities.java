@@ -2,7 +2,7 @@ package br.com.xptosystems.address;
 
 public class Cities implements Comparable<Cities> {
 
-    private Long ibgeId;
+    private Long ibge_id;
     private String uf;
     private String name;
     private Boolean capital;
@@ -14,7 +14,7 @@ public class Cities implements Comparable<Cities> {
     private String meso_region;
 
     public Cities() {
-        this.ibgeId = null;
+        this.ibge_id = null;
         this.uf = "";
         this.name = "";
         this.capital = false;
@@ -26,8 +26,8 @@ public class Cities implements Comparable<Cities> {
         this.meso_region = "";
     }
 
-    public Cities(Long ibgeId, String uf, String name, Boolean capital, Double lon, Double lat, String no_accents, String alternative_names, String micro_region, String meso_region) {
-        this.ibgeId = ibgeId;
+    public Cities(Long ibge_id, String uf, String name, Boolean capital, Double lon, Double lat, String no_accents, String alternative_names, String micro_region, String meso_region) {
+        this.ibge_id = ibge_id;
         this.uf = uf;
         this.name = name;
         this.capital = capital;
@@ -39,12 +39,12 @@ public class Cities implements Comparable<Cities> {
         this.meso_region = meso_region;
     }
 
-    public Long getIbgeId() {
-        return ibgeId;
+    public Long getIbge_id() {
+        return ibge_id;
     }
 
-    public void setIbgeId(Long ibgeId) {
-        this.ibgeId = ibgeId;
+    public void setIbge_id(Long ibge_id) {
+        this.ibge_id = ibge_id;
     }
 
     public String getUf() {

@@ -1,7 +1,6 @@
 package br.com.xptosystems.ws;
 
 import br.com.xptosystems.address.Cities;
-import br.com.xptosystems.address.CitiesComparator;
 import br.com.xptosystems.address.dao.CitiesCsv;
 import br.com.xptosystems.utils.NotifyResponse;
 import com.google.gson.Gson;
@@ -16,7 +15,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Path("/cities")
@@ -33,7 +31,7 @@ public class CitiesWS {
             return Response.status(200).entity(gson.toJson(notifyResponse)).build();
         }
         Cities city = gson.fromJson(cityjson, Cities.class);
-        if (city.getIbgeId() == null) {
+        if (city.getIbge_id() == null) {
             notifyResponse.setObject("Informar o Id do Ibge!");
             return Response.status(200).entity(gson.toJson(notifyResponse)).build();
         }

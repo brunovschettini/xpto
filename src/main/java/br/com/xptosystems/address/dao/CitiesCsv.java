@@ -112,7 +112,7 @@ public class CitiesCsv {
             Cities cities = new Cities();
             List<Cities> list = this.db();
             for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).getIbgeId().equals(Long.parseLong(code))) {
+                if (list.get(i).getIbge_id().equals(Long.parseLong(code))) {
                     cities = list.get(i);
                     break;
                 }
@@ -152,7 +152,7 @@ public class CitiesCsv {
                 switch (column) {
                     case "ibde_id":
                         try {
-                            if (list.get(i).getIbgeId() == Long.parseLong(query)) {
+                            if (list.get(i).getIbge_id() == Long.parseLong(query)) {
                                 newList.add(list.get(i));
                             }
                         } catch (Exception e) {
@@ -248,7 +248,7 @@ public class CitiesCsv {
                 if (list.get(i).getUf().toUpperCase().equals(c.getUf().toUpperCase()) && list.get(i).getName().toUpperCase().equals(c.getName().toUpperCase())) {
                     return "Cidade já cadastrada!";
                 }
-                if (Objects.equals(list.get(i).getIbgeId(), c.getIbgeId())) {
+                if (Objects.equals(list.get(i).getIbge_id(), c.getIbge_id())) {
                     return "Código do IBGE já cadastrado!";
                 }
             }
@@ -264,7 +264,7 @@ public class CitiesCsv {
             Boolean delete = false;
             List<Cities> list = this.db();
             for (int i = 0; i < list.size(); i++) {
-                if (Objects.equals(list.get(i).getIbgeId(), c.getIbgeId())) {
+                if (Objects.equals(list.get(i).getIbge_id(), c.getIbge_id())) {
                     delete = true;
                 }
             }
@@ -294,7 +294,7 @@ public class CitiesCsv {
                     String[] cities = line.split(cvsSplitBy);
 
                     Cities c = new Cities();
-                    c.setIbgeId(Long.parseLong(cities[0]));
+                    c.setIbge_id(Long.parseLong(cities[0]));
                     c.setUf(cities[1]);
                     c.setName(cities[2]);
                     c.setCapital(Boolean.parseBoolean(cities[3]));
@@ -349,7 +349,7 @@ public class CitiesCsv {
                 switch (column) {
                     case "ibde_id":
                         try {
-                            map.put(list.get(i).getIbgeId() + "", list.get(i).getIbgeId() + "");
+                            map.put(list.get(i).getIbge_id() + "", list.get(i).getIbge_id()+ "");
                         } catch (Exception e) {
 
                         }
