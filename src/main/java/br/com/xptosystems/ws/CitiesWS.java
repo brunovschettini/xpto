@@ -65,8 +65,8 @@ public class CitiesWS {
     @GET
     @Path("/count_by_state/{uf}")
     @Produces({MediaType.APPLICATION_JSON})
-    public synchronized Response count_cities_by_state(@PathParam("uf") String uf) {
-        Integer count = new CitiesCsv().count_cities_by_state(uf);
+    public synchronized Response count_by_state(@PathParam("uf") String uf) {
+        Integer count = new CitiesCsv().count_by_state(uf);
         JSONObject jSONObject = new JSONObject();
         jSONObject.put("uf", uf);
         jSONObject.put("amount", count);
@@ -101,21 +101,10 @@ public class CitiesWS {
         Collections.sort(list);
         return Response.status(200).entity(new Gson().toJson(list)).build();
     }
-//
-//    @Path("/store")
-//    @POST
-//    @Produces("application/json")
-//    @Consumes("application/json")
-//    public String save(String city) {
-//        try {
-//            Cities c = new Gson().fromJson(city, Cities.class);
-//            return new Gson().toJson(c);
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
 
     /**
+     * 7 Permitir adicionar uma nova Cidade
+     *
      *
      * @param ibge_id
      * @param uf

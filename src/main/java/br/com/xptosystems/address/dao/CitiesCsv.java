@@ -8,17 +8,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
 
 public class CitiesCsv {
 
@@ -96,7 +91,7 @@ public class CitiesCsv {
         return listUfAcumulador;
     }
 
-    public Integer count_cities_by_state(String uf) {
+    public Integer count_by_state(String uf) {
         Integer count = 0;
         try {
             List<Cities> list = this.db();
