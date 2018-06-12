@@ -1,7 +1,10 @@
 package br.com.xptosystems.address;
 
+import java.util.Date;
+
 public class Cities implements Comparable<Cities> {
 
+    private Long id;
     private Long ibge_id;
     private String uf;
     private String name;
@@ -12,8 +15,10 @@ public class Cities implements Comparable<Cities> {
     private String alternative_names;
     private String micro_region;
     private String meso_region;
+    private Date register_date;
 
     public Cities() {
+        this.id = null;
         this.ibge_id = null;
         this.uf = "";
         this.name = "";
@@ -24,6 +29,7 @@ public class Cities implements Comparable<Cities> {
         this.alternative_names = "";
         this.micro_region = "";
         this.meso_region = "";
+        this.register_date = null;
     }
 
     public Cities(Long ibge_id, String uf, String name, Boolean capital, Double lon, Double lat, String no_accents, String alternative_names, String micro_region, String meso_region) {
@@ -37,6 +43,21 @@ public class Cities implements Comparable<Cities> {
         this.alternative_names = alternative_names;
         this.micro_region = micro_region;
         this.meso_region = meso_region;
+    }
+
+    public Cities(Long id, Long ibge_id, String uf, String name, Boolean capital, Double lon, Double lat, String no_accents, String alternative_names, String micro_region, String meso_region, Date register_date) {
+        this.id = id;
+        this.ibge_id = ibge_id;
+        this.uf = uf;
+        this.name = name;
+        this.capital = capital;
+        this.lon = lon;
+        this.lat = lat;
+        this.no_accents = no_accents;
+        this.alternative_names = alternative_names;
+        this.micro_region = micro_region;
+        this.meso_region = meso_region;
+        this.register_date = register_date;
     }
 
     public Long getIbge_id() {
@@ -122,6 +143,22 @@ public class Cities implements Comparable<Cities> {
     @Override
     public int compareTo(Cities c) {
         return this.name.compareTo(c.getName());
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getRegister_date() {
+        return register_date;
+    }
+
+    public void setRegister_date(Date register_date) {
+        this.register_date = register_date;
     }
 
 }
