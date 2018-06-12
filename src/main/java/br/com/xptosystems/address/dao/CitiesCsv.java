@@ -150,7 +150,7 @@ public class CitiesCsv {
             List<Cities> newList = new ArrayList();
             for (int i = 0; i < list.size(); i++) {
                 switch (column) {
-                    case "ibde_id":
+                    case "igde_id":
                         try {
                             if (list.get(i).getIbge_id() == Long.parseLong(query)) {
                                 newList.add(list.get(i));
@@ -365,7 +365,7 @@ public class CitiesCsv {
             List<Cities> newList = new ArrayList();
             for (int i = 0; i < list.size(); i++) {
                 switch (column) {
-                    case "ibde_id":
+                    case "ibge_id":
                         try {
                             map.put(list.get(i).getIbge_id() + "", list.get(i).getIbge_id() + "");
                         } catch (Exception e) {
